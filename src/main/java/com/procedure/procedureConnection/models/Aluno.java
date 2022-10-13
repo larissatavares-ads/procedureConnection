@@ -1,11 +1,13 @@
 package com.procedure.procedureConnection.models;
 
-import org.hibernate.id.IntegralDataTypeHolder;
-
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 
 @Entity
+//@NamedStoredProcedureQuery(name = "Aluno.adicionaNovoAluno",
+//                           procedureName = "sp_adicionaNovoAluno", parameters = {
+//        @StoredProcedureParameter(mode = ParameterMode.IN, name = "model_in", type = String.class),
+//        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "count_out", type = Integer.class)
+//})
 public class Aluno {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -19,14 +19,19 @@ public class ProcedureController {
     @Autowired
     private ProcedureService procedureService;
 
+//    @PostMapping
+//    public ResponseEntity<Object> save(@RequestBody @Valid AlunoDto alunoDto){
+//        if(procedureService.existsByMatricula(alunoDto.getMatricula())){
+//            return ResponseEntity.status(HttpStatus.CONFLICT).body("CONFLITO: Já existe um aluno salvo com essa matrícula!");
+//        }
+//        var aluno = new Aluno();
+//        BeanUtils.copyProperties(alunoDto, aluno);
+//        return ResponseEntity.status(HttpStatus.CREATED).body(procedureService.save(aluno));
+//    }
     @PostMapping
-    public ResponseEntity<Object> save(@RequestBody @Valid AlunoDto alunoDto){
-        if(procedureService.existsByMatricula(alunoDto.getMatricula())){
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("CONFLITO: Já existe um aluno salvo com essa matrícula!");
-        }
-        var aluno = new Aluno();
-        BeanUtils.copyProperties(alunoDto, aluno);
-        return ResponseEntity.status(HttpStatus.CREATED).body(procedureService.save(aluno));
+    public ResponseEntity<Object> adicionaNovoAluno(){
+        procedureService.adicionaNovoAluno();
+        return ResponseEntity.status(HttpStatus.CREATED).body("Ok");
     }
     @GetMapping
     public ResponseEntity<List<Aluno>> findAll(){

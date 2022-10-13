@@ -26,4 +26,7 @@ public class ProcedureService {
     public boolean existsByMatricula(Integer matricula){
         return procedureRepository.existsByMatricula(matricula);
     }
+    public void adicionaNovoAluno(){
+        procedureRepository.adicionaNovoAluno();
+    }
 }
