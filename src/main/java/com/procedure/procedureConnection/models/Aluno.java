@@ -5,8 +5,9 @@ import javax.persistence.*;
 @Entity
 //@NamedStoredProcedureQuery(name = "Aluno.adicionaNovoAluno",
 //                           procedureName = "sp_adicionaNovoAluno", parameters = {
-//        @StoredProcedureParameter(mode = ParameterMode.IN, name = "model_in", type = String.class),
-//        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "count_out", type = Integer.class)
+//        @StoredProcedureParameter(mode = ParameterMode.IN, name = "@NOME", type = String.class),
+//        @StoredProcedureParameter(mode = ParameterMode.IN, name = "@MATRICULA", type = Integer.class),
+////        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "count_out", type = Integer.class)
 //})
 public class Aluno {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

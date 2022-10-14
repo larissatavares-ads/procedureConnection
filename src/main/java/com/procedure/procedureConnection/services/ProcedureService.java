@@ -23,10 +23,21 @@ public class ProcedureService {
     public void deleteById(Aluno aluno) {
         procedureRepository.delete(aluno);
     }
-    public boolean existsByMatricula(Integer matricula){
-        return procedureRepository.existsByMatricula(matricula);
+    public boolean existsByMatricula(Integer matricula){ return procedureRepository.existsByMatricula(matricula);    }
+    @Transactional
+    public void adicionaNovoAluno(Aluno aluno){
+        procedureRepository.adicionaNovoAluno(aluno);
     }
-    public void adicionaNovoAluno(){
-        procedureRepository.adicionaNovoAluno();
+    @Transactional
+    public List<Aluno> retornaAluno() {
+        return procedureRepository.retornaAluno();
+    }
+    @Transactional
+    public Optional<Aluno> retornaAlunoPorMatricula(Integer matricula) {
+        return procedureRepository.retornaAlunoPorMatricula(matricula);
+    }
+
+    public void deleteAlunoPorId(Long id) {
+        procedureRepository.deleteAlunoPorId(id);
     }
 }

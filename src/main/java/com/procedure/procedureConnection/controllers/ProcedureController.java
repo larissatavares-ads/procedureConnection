@@ -29,14 +29,42 @@ public class ProcedureController {
 //        return ResponseEntity.status(HttpStatus.CREATED).body(procedureService.save(aluno));
 //    }
     @PostMapping
-    public ResponseEntity<Object> adicionaNovoAluno(){
-        procedureService.adicionaNovoAluno();
+    public ResponseEntity<Object> adicionaNovoAluno(@RequestBody @Valid AlunoDto alunoDto){
+        var aluno = new Aluno();
+        BeanUtils.copyProperties(alunoDto, aluno);
+        procedureService.adicionaNovoAluno(aluno);
         return ResponseEntity.status(HttpStatus.CREATED).body("Ok");
     }
+
+
+//    @GetMapping
+//    public ResponseEntity<List<Aluno>> findAll(){
+//        return ResponseEntity.status(HttpStatus.OK).body(procedureService.findAll());
+//    }
     @GetMapping
-    public ResponseEntity<List<Aluno>> findAll(){
-        return ResponseEntity.status(HttpStatus.OK).body(procedureService.findAll());
+    public ResponseEntity<List<Aluno>> retornaAluno(){
+        return ResponseEntity.status(HttpStatus.OK).body(procedureService.retornaAluno());
     }
+    @GetMapping("/{matricula}")
+    public ResponseEntity<Object> retornaAlunoPorMatricula(@PathVariable(value="matricula") Integer matricula){
+        return ResponseEntity.status(HttpStatus.OK).body(procedureService.retornaAlunoPorMatricula(matricula));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteAlunoPorId(@PathVariable(value = "id") Long id){
+        procedureService.deleteAlunoPorId(id);
+        return ResponseEntity.status(HttpStatus.OK).body("Aluno deletado com sucesso.");
+    }
+
+//    @PutMapping("/{matricula}")
+//    public ResponseEntity<Object> atualizaPorMatricula(@PathVariable(value = "id") Integer matricula, @RequestBody @Valid AlunoDto alunoDto){
+//        Optional<Aluno> alunoOptional = procedureService.retornaAlunoPorMatricula(matricula);
+//        var aluno = new Aluno();
+//        BeanUtils.copyProperties(alunoDto, aluno);
+//        aluno.setId(alunoOptional.get().getId());
+//        procedureService.adicionaNovoAluno(aluno);
+//        return ResponseEntity.status(HttpStatus.OK).body("Atualização bem sucedida.");
+//    }
 //    @GetMapping("/{id}")
 //    public ResponseEntity<Object> findById(@PathVariable(value="id") Long id){
 //        Optional<Aluno> alunoOptional = procedureService.findById(id);
