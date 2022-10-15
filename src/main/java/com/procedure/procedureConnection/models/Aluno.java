@@ -1,6 +1,7 @@
 package com.procedure.procedureConnection.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 //@NamedStoredProcedureQuery(name = "Aluno.adicionaNovoAluno",
@@ -10,25 +11,27 @@ import javax.persistence.*;
 ////        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "count_out", type = Integer.class)
 //})
 public class Aluno {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
+    private Integer id;
     private String nome;
     private Integer matricula;
 
     public Aluno() {
     }
 
-    public Aluno(Long id, String nome, Integer matricula) {
+    public Aluno(Integer id, String nome, Integer matricula) {
         this.id = id;
         this.nome = nome;
         this.matricula = matricula;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

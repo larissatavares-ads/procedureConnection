@@ -26,7 +26,9 @@ public class ProcedureService {
     public boolean existsByMatricula(Integer matricula){ return procedureRepository.existsByMatricula(matricula);    }
     @Transactional
     public void adicionaNovoAluno(Aluno aluno){
-        procedureRepository.adicionaNovoAluno(aluno);
+        var nome = aluno.getNome();
+        var matricula = aluno.getMatricula();
+        procedureRepository.adicionaNovoAluno(nome, matricula);
     }
     @Transactional
     public List<Aluno> retornaAluno() {

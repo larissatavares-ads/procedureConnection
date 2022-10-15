@@ -33,7 +33,7 @@ public class ProcedureController {
         var aluno = new Aluno();
         BeanUtils.copyProperties(alunoDto, aluno);
         procedureService.adicionaNovoAluno(aluno);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Ok");
+        return ResponseEntity.status(HttpStatus.CREATED).body("Aluno criado com sucesso.");
     }
 
 

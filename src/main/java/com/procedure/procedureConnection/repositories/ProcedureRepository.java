@@ -18,7 +18,7 @@ public interface ProcedureRepository extends CrudRepository<Aluno, Long> {
     boolean existsByMatricula(Integer matricula);
 
     @Procedure("sp_adicionaNovoAluno")
-    void adicionaNovoAluno(Aluno aluno);
+    void adicionaNovoAluno(String nome, Integer matricula);
 
 //    @Procedure(name = "Aluno.adicionaNovoAluno")
 //    void adicionaNovoAluno(@Param("@NOME") String nome, @Param("@MATRICULA") Integer matricula);
